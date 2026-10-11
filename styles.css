@@ -92,6 +92,11 @@ img { max-width: 100%; height: auto; display: block; }
 
 .hero-text { position: relative; max-width: 38rem; }
 
+@media (max-width: 600px) {
+  .hero { padding-top: calc(var(--topbar) + 4svh); }
+  .tagline { margin-bottom: 1.5rem; }
+}
+
 h1 {
   margin: 0;
   font: italic 300 clamp(4.5rem, 14vw, 9rem)/0.9 var(--serif);
@@ -140,7 +145,7 @@ h1 {
   width: 100%;
   max-width: calc(40rem + 2 * var(--gutter));
   margin: 0 auto;
-  padding: 0 var(--gutter);
+  padding-inline: var(--gutter);
 }
 
 h2 {
@@ -158,6 +163,11 @@ p { margin: 0; }
 
 .product { margin: 4rem 0; }
 .product:empty { display: none; }
+.product img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 0 0 1px rgb(241 237 255 / 0.06), 0 40px 120px -30px rgb(140 115 255 / 0.55), 0 20px 80px -40px rgb(235 107 224 / 0.5);
+}
 
 .group { margin-top: 3rem; max-width: 60ch; }
 .group p { color: var(--muted); }
