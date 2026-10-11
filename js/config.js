@@ -1,2 +1,2 @@
 // The public GitHub repo that hosts this site and the Kairos releases.
-export const REPO = 'EphemeralHorizon/Kairos';
+export const REPO = 'KairosFM/Kairos';

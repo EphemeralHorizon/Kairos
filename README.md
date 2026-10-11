@@ -7,9 +7,9 @@
 <p align="center">Hear any song your way, with control over every part of it.</p>
 
 <p align="center">
-  <a href="https://github.com/EphemeralHorizon/Kairos/releases/latest/download/Kairos.dmg"><b>Download for Mac</b></a>
+  <a href="https://github.com/KairosFM/Kairos/releases/latest/download/Kairos.dmg"><b>Download for Mac</b></a>
   &nbsp;·&nbsp;
-  <a href="https://ephemeralhorizon.github.io/Kairos/">Website</a>
+  <a href="https://kairosfm.github.io/Kairos/">Website</a>
 </p>
 
 ![The Kairos window](assets/screenshot.jpg)
