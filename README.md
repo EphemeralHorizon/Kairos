@@ -33,6 +33,4 @@ Until a release exists, every Download button reads "Coming soon".
 
 - **Releases are notarized** (after joining the Apple Developer Program): delete the `<div data-unnotarized>` block in `index.html`.
 - **Custom domain:** add a `CNAME` file containing the domain (for example `kairos.app`), then set the domain under Settings → Pages.
-- **App screenshot:** save it as `assets/screenshot.png` and put
-  `<img src="assets/screenshot.png" alt="Kairos Now Playing window with the stem mixer" width="…" height="…">`
-  inside `<figure class="product">`.
+- **App screenshot:** replace `assets/screenshot.jpg` (about 1600 px wide, JPEG) and update the `width`/`height` on its `<img>`.
