@@ -236,3 +236,14 @@ footer {
   transition: opacity 600ms ease, filter 600ms ease;
 }
 .motion .story-line.is-active { opacity: 1; filter: none; }
+
+/* Before the first release: buttons read "Coming soon" and do nothing */
+
+.when-soon { display: none; }
+[data-coming-soon] .when-ready { display: none; }
+[data-coming-soon] .when-soon { display: inline; }
+[data-coming-soon] .download {
+  pointer-events: none;
+  background: rgb(241 237 255 / 0.14);
+  color: var(--text);
+}
