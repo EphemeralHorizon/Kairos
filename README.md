@@ -13,10 +13,11 @@ Tests live outside this folder, in `tools/site-tests/` (`npm test` and `npm run 
 
 ## Publish for the first time
 
-1. Create a public GitHub repo named `kairos`, and push this folder's contents to its `main` branch.
-2. Replace `REPLACE_USER` with your GitHub username in `index.html` (three Download links) and `js/config.js`.
-3. On GitHub: Settings → Pages → Build and deployment → Deploy from a branch → `main` / root.
-4. The site appears at `https://<username>.github.io/kairos/`.
+The repo is `EphemeralHorizon/Kairos`, set in `index.html` (three Download links and `og:image`) and `js/config.js`.
+
+1. Push this folder's contents to the repo's `main` branch.
+2. On GitHub: Settings → Pages → Build and deployment → Deploy from a branch → `main` / root.
+3. The site appears at `https://ephemeralhorizon.github.io/Kairos/`.
 
 Until a release exists, every Download button reads "Coming soon".
 
