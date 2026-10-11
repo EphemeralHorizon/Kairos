@@ -2,10 +2,13 @@
 
 const clamp01 = p => Math.min(1, Math.max(0, p));
 
-/** Sun centre as fractions of canvas width and height. Rises from the horizon (0.58), sets back below it. */
-export function sunPosition(progress) {
+/**
+ * Sun centre as fractions of canvas width and height. Starts just risen above `horizon`, arcs across,
+ * and sinks fully below it by the end (`radius` is the sun's radius as a fraction of height).
+ */
+export function sunPosition(progress, horizon = 0.58, radius = 0) {
   const p = clamp01(progress);
-  return { x: 0.2 + 0.6 * p, y: 0.58 - 0.18 * Math.sin(Math.PI * p) + 0.02 };
+  return { x: 0.2 + 0.6 * p, y: horizon + 0.02 - 0.18 * Math.sin(Math.PI * p) + 1.1 * radius * p * p };
 }
 
 /** Index of the story caption to show for scroll progress through the story. */

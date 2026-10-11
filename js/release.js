@@ -12,15 +12,23 @@ export function formatRelease(json) {
 
 export async function loadRelease(fetchFn = fetch) {
   const buttons = document.querySelectorAll('.download');
-  if (document.body.hasAttribute('data-coming-soon')) buttons.forEach(b => b.setAttribute('aria-disabled', 'true'));
+  if (document.body.hasAttribute('data-coming-soon')) {
+    buttons.forEach(b => {
+      b.setAttribute('aria-disabled', 'true');
+      b.tabIndex = -1;
+      b.addEventListener('click', e => document.body.hasAttribute('data-coming-soon') && e.preventDefault());
+    });
+  }
   try {
     const res = await fetchFn(`https://api.github.com/repos/${REPO}/releases/latest`);
     if (!res.ok) return;
-    const label = formatRelease(await res.json());
+    const json = await res.json();
+    const label = formatRelease(json);
     if (!label) return;
     document.getElementById('release-version').textContent = label;
+    if (!json.assets?.some(a => a.name === 'Kairos.dmg')) return;
     document.body.removeAttribute('data-coming-soon');
-    buttons.forEach(b => b.removeAttribute('aria-disabled'));
+    buttons.forEach(b => { b.removeAttribute('aria-disabled'); b.removeAttribute('tabindex'); });
   } catch {
     // Offline or rate-limited: keep "Latest version".
   }

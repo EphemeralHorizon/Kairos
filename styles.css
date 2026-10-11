@@ -18,6 +18,7 @@
 *, *::before, *::after { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; scroll-padding-top: var(--topbar); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 body {
   margin: 0;
@@ -112,6 +113,7 @@ h1 {
 }
 
 .requirements { margin: 1rem 0 0; font-size: 0.875rem; color: var(--muted); }
+.hero .requirements { color: rgb(241 237 255 / 0.82); }
 
 /* Story (static: a quiet list; js/horizon.js turns it into a pinned sequence) */
 
@@ -246,6 +248,16 @@ footer {
   transition: opacity 600ms ease, filter 600ms ease;
 }
 .motion .story-line.is-active { opacity: 1; filter: none; }
+
+/* Short screens (laptops with small windows, phones in landscape): keep text above the horizon */
+
+@media (max-height: 640px) {
+  .hero { padding-top: calc(var(--topbar) + 3svh); }
+  h1 { font-size: clamp(3rem, 13svh, 6rem); }
+  .tagline { margin: 0.5rem auto 1rem; }
+  .story-line { font-size: clamp(1.25rem, 5.5svh, 2.25rem); }
+  .motion .story-stage { padding-top: calc(var(--topbar) + 3svh); }
+}
 
 /* Before the first release: buttons read "Coming soon" and do nothing */
 

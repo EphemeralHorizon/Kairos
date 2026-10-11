@@ -5,16 +5,17 @@ import { sunPosition, activeCaption, waveY } from './motion.js';
 const canvas = document.getElementById('horizon');
 const story = document.getElementById('story');
 const lines = [...document.querySelectorAll('.story-line')];
+const heroText = document.querySelector('.hero-text');
+const captions = document.querySelector('.story-lines');
 const ctx = canvas.getContext('2d');
 const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const STEMS = ['#8C73FF', '#B86BFF', '#EB6BE0', '#FF7AA8'];
-const HORIZON = 0.58;
 
 document.documentElement.classList.add('js');
 if (!still) document.documentElement.classList.add('motion');
 
-let width = 0, height = 0, sun = 0, active = -1, visible = true;
+let width = 0, height = 0, horizonFrac = 0.58, sun = 0, active = -1, visible = true;
 
 function resize() {
   const dpr = devicePixelRatio || 1;
@@ -23,10 +24,19 @@ function resize() {
   canvas.width = Math.round(width * dpr);
   canvas.height = Math.round(height * dpr);
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  placeHorizon();
+}
+
+// The horizon sits at 58% of the screen, lower on short screens so it never runs through the text.
+function placeHorizon() {
+  const heroBottom = heroText.offsetTop + heroText.offsetHeight;
+  const captionBottom = still ? 0 : captions.offsetTop + captions.offsetHeight;
+  horizonFrac = Math.min(0.85, Math.max(0.58, (Math.max(heroBottom, captionBottom) + 24) / height));
+  canvas.dataset.horizon = Math.round(horizonFrac * height);
 }
 
 function draw(t) {
-  const w = width, h = height, horizon = h * HORIZON;
+  const w = width, h = height, horizon = h * horizonFrac;
 
   // Sky: night base, then the glow toward the horizon.
   ctx.fillStyle = '#0F0D1F';
@@ -38,8 +48,9 @@ function draw(t) {
   ctx.fillRect(0, 0, w, horizon);
 
   // The sun and its glow.
-  const { x, y } = sunPosition(still ? 0.35 : sun);
-  const sx = w * x, sy = h * y, r = Math.min(w, h) * 0.11;
+  const r = Math.min(w, h) * 0.11;
+  const { x, y } = sunPosition(still ? 0.35 : sun, horizonFrac, r / h);
+  const sx = w * x, sy = h * y;
   const glow = ctx.createRadialGradient(sx, sy, r * 0.5, sx, sy, r * 2.6);
   glow.addColorStop(0, 'rgb(184 107 255 / 0.55)');
   glow.addColorStop(1, 'rgb(184 107 255 / 0)');
@@ -112,5 +123,6 @@ addEventListener('resize', () => { resize(); onScroll(); if (still) draw(0); });
 addEventListener('scroll', onScroll, { passive: true });
 resize();
 onScroll();
+document.fonts?.ready.then(() => { placeHorizon(); if (still) draw(0); });
 if (still) draw(0);
 else requestAnimationFrame(loop);

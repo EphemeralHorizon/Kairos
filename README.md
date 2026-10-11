@@ -25,7 +25,8 @@ Until a release exists, every Download button reads "Coming soon".
 1. Build `Kairos.dmg` (`scripts/release.sh` in the app project).
 2. On GitHub: Releases → Draft a new release → tag `v1.0` (or the next version).
 3. Attach the file. It must be named exactly `Kairos.dmg`.
-4. Publish. The Download buttons and footer version update on their own; no site edit needed.
+4. Publish. The footer version updates on its own.
+5. **First release only:** delete `data-coming-soon` from the `<body>` tag in `index.html` and push. The page also switches itself on when GitHub reports a release containing `Kairos.dmg`, but that check can fail (offline visitors, GitHub's 60-requests-an-hour limit), so don't rely on it.
 
 ## Later changes
 
