@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kairos for Mac</title>
-  <meta name="description" content="Hear any song your way. Kairos splits the music on your Mac into vocals, drums, bass and the rest, so you can shape every part. Free for macOS.">
+  <title>Kairos for Mac and Android</title>
+  <meta name="description" content="Hear any song your way. Kairos splits the music on your Mac or Android phone into vocals, drums, bass and the rest, so you can shape every part. Free for macOS and Android.">
   <meta name="theme-color" content="#0F0D1F">
-  <meta property="og:title" content="Kairos for Mac">
+  <meta property="og:title" content="Kairos for Mac and Android">
   <meta property="og:description" content="Hear any song your way, with control over every part of it.">
   <meta property="og:image" content="https://kairosfm.github.io/Kairos/assets/icon.png">
   <link rel="icon" href="assets/icon.png">
@@ -28,8 +28,11 @@
     <div class="hero-text">
       <h1>Kairos</h1>
       <p class="tagline">Hear any song your way, with control over every part of it.</p>
-      <a class="download" href="https://github.com/KairosFM/Kairos/releases/latest/download/Kairos.dmg"><span class="when-ready">Download for Mac</span><span class="when-soon">Coming soon</span></a>
-      <p class="requirements">Free for macOS 14.2 or later. Apple Silicon recommended.</p>
+      <div class="downloads">
+        <a class="download" href="https://github.com/KairosFM/Kairos/releases/latest/download/Kairos.dmg"><span class="when-ready"><span class="long">Download for </span><span class="short" aria-hidden="true">↓ </span>Mac</span><span class="when-soon">Coming soon</span></a>
+        <a class="download-android" href="downloads/Kairos.apk" download><span class="long">Download for </span><span class="short" aria-hidden="true">↓ </span>Android</a>
+      </div>
+      <p class="requirements">Free. macOS 14.2 or later, Android 10 or later.</p>
     </div>
   </header>
 
@@ -83,6 +86,12 @@
         <dt>Install</dt>
         <dd>Open the DMG and drag Kairos to Applications.</dd>
       </dl>
+      <dl id="android">
+        <dt>On Android</dt>
+        <dd>Kairos works with apps that let other apps hear their sound, like YouTube Music and Chrome. Spotify doesn’t allow this on Android, so use Kairos for Mac with Spotify. It plays about 8 seconds behind.</dd>
+        <dt>Installing on Android</dt>
+        <dd>Tap Download for Android and open the file. If Android asks, allow your browser to install apps, then tap Install. When you start Kairos, choose Share entire screen: Kairos only uses the sound.</dd>
+      </dl>
       <div data-unnotarized>
         <dl>
           <dt>First time opening Kairos</dt>
@@ -94,8 +103,11 @@
 
   <footer id="download" class="column">
     <p class="closing">Kairos is free.</p>
-    <a class="download" href="https://github.com/KairosFM/Kairos/releases/latest/download/Kairos.dmg"><span class="when-ready">Download for Mac</span><span class="when-soon">Coming soon</span></a>
-    <p class="requirements"><span id="release-version">Latest version</span>, for macOS 14.2 or later.</p>
+    <div class="downloads">
+      <a class="download" href="https://github.com/KairosFM/Kairos/releases/latest/download/Kairos.dmg"><span class="when-ready"><span class="long">Download for </span><span class="short" aria-hidden="true">↓ </span>Mac</span><span class="when-soon">Coming soon</span></a>
+      <a class="download-android" href="downloads/Kairos.apk" download><span class="long">Download for </span><span class="short" aria-hidden="true">↓ </span>Android</a>
+    </div>
+    <p class="requirements"><span id="release-version">Latest version</span>, for macOS 14.2 or later. Android 1.0, for Android 10 or later.</p>
     <p class="credits">Made by Ephemeral Horizon. Source separation by <a href="https://github.com/facebookresearch/demucs">HTDemucs</a> (Meta AI, MIT licence).</p>
   </footer>
 </body>

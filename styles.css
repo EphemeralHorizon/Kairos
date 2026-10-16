@@ -77,6 +77,30 @@ img { max-width: 100%; height: auto; display: block; }
 .download:active { transform: translateY(0); }
 .download-small { padding: 0.45em 1.1em; font-size: 0.9375rem; }
 
+/* Android sits beside Mac: same shape, outlined. It's served from this site, so it's
+   always available (no "Coming soon"). */
+.downloads { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
+.download-android {
+  display: inline-block;
+  padding: 0.8em 1.6em;
+  border-radius: 999px;
+  border: 1.5px solid rgb(241 237 255 / 0.55);
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 160ms ease, border-color 160ms ease, background-color 160ms ease;
+}
+.download-android:hover { border-color: #fff; background: rgb(241 237 255 / 0.08); transform: translateY(-1px); }
+.download-android:active { transform: translateY(0); }
+/* Phones: both buttons on one line, above the horizon. */
+.downloads .short { display: none; }
+@media (max-width: 440px) {
+  .downloads { gap: 0.6rem; }
+  .downloads .long { display: none; }
+  .downloads .short { display: inline; }
+  .downloads .download, .downloads .download-android { padding: 0.75em 1.4em; }
+}
+
 /* Hero */
 
 .hero {
